@@ -16,9 +16,8 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const app = express(); // ✅ Declare app first
+const app = express(); 
 
-// Middleware
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
@@ -26,20 +25,14 @@ app.use(cors({
   credentials: true
 }));
 
-// ✅ Make /uploads folder publicly accessible
-app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
-
-// Database connection
 connectDB();
 
-// Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api/notifications', notificationRoutes);
-
-// Error handling middleware
 app.use(errorHandler);
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 const PORT = process.env.PORT || 5000;
 

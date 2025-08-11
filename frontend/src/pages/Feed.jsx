@@ -28,7 +28,7 @@ const Feed = () => {
   <Navbar/>
     <div className="feed-container">
       <div className="feed-content">
-        {/* Create Post Box */}
+       
         {user && (
           <div className="create-post">
             <form onSubmit={handleSubmit}>
@@ -76,7 +76,7 @@ const Feed = () => {
           </div>
         )}
 
-        {/* Posts List */}
+       
         <div className="posts-list">
           {posts.length > 0 ? (
             posts.map((post) => <Post key={post._id} post={post} />)

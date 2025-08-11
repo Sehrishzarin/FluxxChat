@@ -11,7 +11,6 @@ const Notifications = () => {
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
-        // Simulate API call
         setTimeout(() => {
           setNotifications([
             {
@@ -54,7 +53,7 @@ const Notifications = () => {
     setNotifications(notifications.map(n => 
       n._id === id ? { ...n, read: true } : n
     ));
-    // In a real app, call API to mark as read
+
   };
 
   if (loading) return <div className="loading">Loading notifications...</div>;

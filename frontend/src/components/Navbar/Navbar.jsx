@@ -17,7 +17,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-left">
         <Link to="/" className="logo">
-          <span className="logo-text">Fluxx Chat</span>
+          <span className="logo-text">FluxxChat</span>
         </Link>
       </div>
 
@@ -31,7 +31,7 @@ const Navbar = () => {
       <div className="navbar-right">
         <Link to="/notifications" className="nav-icon">
           <FiBell />
-          <span className="notification-badge">3</span>
+          <span className="notification-badge">2</span>
         </Link>
         
         {user ? (

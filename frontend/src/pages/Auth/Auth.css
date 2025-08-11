@@ -1,63 +1,103 @@
 .auth-container {
   display: flex;
+  min-height: 100vh;
+  background-color: #06776efa; /* Light teal background */
+}
+
+.auth-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-color: #f5f5f5;
+  padding: 2rem;
+  background-color: #103d39; 
+  color: white;
+}
+
+.auth-logo {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1rem;
+}
+
+.auth-company {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.auth-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
 }
 
 .auth-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: rgb(27, 158, 152);
+  padding: 2.5rem;
+  border-radius: 5px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   width: 100%;
   max-width: 400px;
 }
 
 .auth-card h2 {
   margin-top: 0;
+  margin-bottom: 1.5rem;
   text-align: center;
-  color: #333;
+  color: #bee5e3;
+  font-size: 1.8rem;
 }
 
 .auth-card form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .auth-card input {
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 0.9rem;
+  border: 1px solid #ccfbf1; 
+  border-radius: 6px;
   font-size: 1rem;
+  background-color: #f0fdfa; 
+  transition: border-color 0.3s;
+}
+
+.auth-card input:focus {
+  outline: none;
+  border-color: #0d9488; 
 }
 
 .auth-card button {
-  padding: 0.75rem;
-  background-color: #0077b5;
+  padding: 0.9rem;
+  background-color: #067269; 
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.3s;
 }
 
 .auth-card button:hover {
-  background-color: #006097;
+  background-color: #0f766e; 
 }
 
 .auth-card p {
   text-align: center;
-  margin-top: 1rem;
-  color: #666;
+  margin-top: 1.5rem;
+  color: #0d6357;
 }
 
 .auth-card a {
-  color: #0077b5;
+  color: #151b1b; 
   text-decoration: none;
+  font-weight: 500;
 }
 
 .auth-card a:hover {

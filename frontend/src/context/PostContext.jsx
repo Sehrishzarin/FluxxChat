@@ -9,7 +9,7 @@ export const PostProvider = ({ children }) => {
   const [posts, setPosts] = useState([]);
   const { user } = useContext(AuthContext);
 
-  // Fetch all posts
+  
   const fetchPosts = async () => {
     try {
       const res = await axios.get('http://localhost:5000/api/posts', {
@@ -21,7 +21,7 @@ export const PostProvider = ({ children }) => {
     }
   };
 
-  // Create a post
+ 
   const createPost = async (text, image) => {
     try {
       const formData = new FormData();
@@ -39,7 +39,7 @@ export const PostProvider = ({ children }) => {
     }
   };
 
-  // Like a post
+  
   const likePost = async (postId) => {
     try {
       const res = await axios.put(
@@ -55,7 +55,7 @@ export const PostProvider = ({ children }) => {
     }
   };
 
-  // Add a comment
+  
   const addComment = async (postId, text) => {
     try {
       const res = await axios.post(

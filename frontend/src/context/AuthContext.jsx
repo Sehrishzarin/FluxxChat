@@ -10,7 +10,6 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  // Check if user is logged in on app load
   useEffect(() => {
     const checkAuth = async () => {
       try {
@@ -25,7 +24,7 @@ export const AuthProvider = ({ children }) => {
     checkAuth();
   }, []);
 
-  // Register user
+
   const register = async (formData) => {
     try {
       const res = await axios.post('http://localhost:5000/api/auth/register', formData);
@@ -37,7 +36,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Login user
+  
   const login = async (formData) => {
     try {
       const res = await axios.post('http://localhost:5000/api/auth/login', formData, { withCredentials: true });
@@ -49,7 +48,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Logout user
+
   const logout = async () => {
     try {
       await axios.post('http://localhost:5000/api/auth/logout', {}, { withCredentials: true });

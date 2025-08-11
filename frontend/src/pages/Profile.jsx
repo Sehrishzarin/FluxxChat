@@ -15,10 +15,8 @@ const Profile = () => {
 
   useEffect(() => {
     const loadProfile = async () => {
-      // In a real app, you'd fetch the user profile from API
       const userToShow = userId || currentUser?._id;
       if (userToShow) {
-        // Simulate fetching user data
         setProfileUser({
           ...currentUser,
           bio: currentUser.bio || 'No bio yet'
@@ -30,7 +28,7 @@ const Profile = () => {
   }, [userId, currentUser]);
 
   const handleSave = () => {
-    // In a real app, you'd call an API to update the profile
+
     setProfileUser({ ...profileUser, bio });
     setIsEditing(false);
   };
