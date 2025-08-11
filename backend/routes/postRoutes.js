@@ -1,20 +1,27 @@
-const express = require("express");
-const router = express.Router();
-const upload = require("../middleware/uploadMiddleware");
-const auth = require("../middleware/authMiddleware");
-const { deleteComment } = require("../controllers/postController");
-const {
+import express from 'express';
+import {
   createPost,
-  getAllPosts,
+  getPosts,
   likePost,
-  commentPost,
-  deletePost
-} = require("../controllers/postController");
+  addComment,
+  deletePost,
+  deleteComment,
+} from '../controllers/postController.js';
+import { protect } from '../middleware/auth.js';
+import upload from '../config/multer.js';
 
-router.post("/", auth, upload.single("image"), createPost);
-router.get("/", auth, getAllPosts);
-router.put("/like/:id", auth, likePost);
-router.post("/comment/:id", auth, commentPost);
-router.delete("/:id", auth, deletePost);
-router.delete("/:postId/comment/:commentId", auth, deleteComment);
-module.exports = router;
+const router = express.Router();
+
+router
+  .route('/')
+  .post(protect, upload.single('image'), createPost)
+  .get(protect, getPosts);
+
+router.route('/:id/like').put(protect, likePost);
+router.route('/:id/comment').post(protect, addComment);
+router.route('/:id').delete(protect, deletePost);
+router
+  .route('/:postId/comments/:commentId')
+  .delete(protect, deleteComment);
+
+export default router;

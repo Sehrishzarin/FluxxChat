@@ -1,13 +1,17 @@
-const express = require('express');
-const { register, login } = require('../controllers/authController');
-const protect = require("../middleware/authMiddleware"); 
-const upload = require("../middleware/uploadMiddleware"); 
+import express from 'express';
+import {
+  registerUser,
+  loginUser,
+  logoutUser,
+  getMe
+} from '../controllers/authController.js';
+import { protect } from '../middleware/auth.js';
+
 const router = express.Router();
-const { createPost } = require('../controllers/postController');
 
-// Authentication routes
-router.post('/register', register);
-router.post('/login', login);
-router.post("/posts", protect, upload.single("image"), createPost);
+router.post('/register', registerUser);
+router.post('/login', loginUser);
+router.post('/logout', logoutUser);
+router.get('/me', protect, getMe);
 
-module.exports = router;
+export default router;

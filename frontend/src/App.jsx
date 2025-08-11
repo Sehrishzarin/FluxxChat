@@ -1,22 +1,31 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
-import Login from './pages/Login'
-import Register from './pages/Register'
-import Feed from './pages/Feed'
-import Profile from './pages/Profile'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import { PostProvider } from './context/PostContext';
+import { Toaster } from 'react-hot-toast';
 
-const App = () => {
-  const isLoggedIn = localStorage.getItem("token")
+import Feed from './pages/Feed';
+import Login from './pages/Auth/Login';
+import Register from './pages/Auth/Register';
+import Profile from './pages/Profile';
+import Notifications from './pages/Notifications';
+
+export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={
-        isLoggedIn ? <Navigate to="/feed" /> : <Navigate to="/login" />
-      } />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/feed" element={isLoggedIn ? <Feed /> : <Navigate to="/login" />} />
-      <Route path="/profile" element={isLoggedIn ? <Profile /> : <Navigate to="/login" />} />
-    </Routes>
-  )
+   
+      <AuthProvider>
+        <PostProvider>
+         
+          <Toaster  position="top-right" />
+          <Routes>
+            <Route path="/" element={<Feed />} />
+            <Route path="/feed" element={<Feed />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/notifications" element={<Notifications />} />
+          </Routes>
+        </PostProvider>
+      </AuthProvider>
+    
+  );
 }
-
-export default App
